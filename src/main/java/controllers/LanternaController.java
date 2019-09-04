@@ -188,7 +188,6 @@ public class LanternaController {
             viewRule(ruleStrings.get(selected));
             selected = view.itemSelect(ruleStrings);
         }
-        viewProgram();
     }
 
     public void viewRule(String rule) throws IOException {
