@@ -50,7 +50,7 @@ public class DDLVProgram {
         }
     }
 
-    public void replaceRule(String oldRule, String newRule) throws DDLVSyntaxException {
+    public void replaceRule(String oldRule, String newRule) throws DDLVSyntaxException  {
         if (oldRule.contains(STRICT_IMPLICATION)) {
             if (newRule.contains(DEFEASIBLE_IMPLICATION)) {
                 defeasibleRules.add(newRule);

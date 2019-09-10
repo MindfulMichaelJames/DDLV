@@ -54,12 +54,14 @@ public class RankedModel {
         int rankCounter = 1;
         defeasibleRanks.put(rankCounter, exceptional(rankCounter-1));
         setRemove(defeasibleRanks.get(rankCounter-1), defeasibleRanks.get(rankCounter));
-        while ((!defeasibleRanks.get(rankCounter-1).toProgramString().equals(defeasibleRanks.get(rankCounter).toProgramString()))
+        while ((!defeasibleRanks.get(rankCounter-1).equals(defeasibleRanks.get(rankCounter)))
                 && defeasibleRanks.get(rankCounter).getRules().size() > 0) {
 //        while ((!previous.toProgramString().equals(current.toProgramString())) && current.getRules().size() > 0) {
             rankCounter ++;
             defeasibleRanks.put(rankCounter, exceptional(rankCounter-1));
-            setRemove(defeasibleRanks.get(rankCounter-1), defeasibleRanks.get(rankCounter));
+            if (!defeasibleRanks.get(rankCounter-1).equals(defeasibleRanks.get(rankCounter))) {
+                setRemove(defeasibleRanks.get(rankCounter-1), defeasibleRanks.get(rankCounter));
+            }
 
 
 //            defeasibleRanks.put(rankCounter, current);
@@ -69,6 +71,13 @@ public class RankedModel {
         }
         if (defeasibleRanks.get(rankCounter).getRules().size() == 0) {
             defeasibleRanks.remove(rankCounter);
+        }
+        else {
+            defeasibleRanks.remove(rankCounter);
+            for (Rule hiddenStrictRule : defeasibleRanks.get(rankCounter-1).getRules()) {
+                infiniteRank.add(hiddenStrictRule.toString(":-"));
+            }
+            defeasibleRanks.remove(rankCounter-1);
         }
     }
 

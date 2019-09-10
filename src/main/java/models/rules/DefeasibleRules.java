@@ -67,6 +67,7 @@ public class DefeasibleRules implements Rules {
         int index = 0;
         for (Rule rule : rules) {
             ruleMap.put(index, rule.toString(DefeasibleRule.IMPLICATION));
+            index ++;
         }
         return ruleMap;
     }
@@ -109,6 +110,22 @@ public class DefeasibleRules implements Rules {
             }
         }
         return exceptionalDefeasibleSet;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toRepresentationString().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass() == DefeasibleRules.class){
+            DefeasibleRules defeasibleObj = (DefeasibleRules) obj;
+            return (this.toRepresentationString().equals(defeasibleObj.toRepresentationString()));
+        }
+        else {
+            return false;
+        }
     }
 
 }

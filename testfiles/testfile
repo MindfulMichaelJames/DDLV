@@ -1,4 +1,6 @@
-bird(X) :- penguin(X).
+bird(X) :~ penguin(X).
 flies(X) :~ bird(X).
 -flies(X) :~ penguin(X).
 flies(X) :~ penguin(X), hasjetpack(X).
+cool(X) :~ tom(X).
+-cool(X) :~ tom(X).
