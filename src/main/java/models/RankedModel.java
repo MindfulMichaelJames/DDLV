@@ -5,6 +5,7 @@ import models.rule.DefeasibleRule;
 import models.rule.StrictRule;
 import models.rules.DefeasibleRules;
 import models.rules.StrictRules;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,20 +20,20 @@ public class RankedModel {
     public RankedModel(DDLVProgram program) throws DLVInvocationException, IOException, DDLVSyntaxException {
         inputProgram = new DLVInputProgramImpl();
         infiniteRank = program.getStrictRules();
-        defeasibleRanks.put(0, program.getDefeasibleRules());
+        defeasibleRanks.put(0, new DefeasibleRules(program.getDefeasibleRules()));
         computeRanking();
 //        printOutDefeasibleRankings();
     }
 
     private DefeasibleRules exceptional(int rank) throws DLVInvocationException, IOException {
         DefeasibleRules exceptionalDefeasibleSet = new DefeasibleRules();
-        System.out.println(rank);
+//        System.out.println(rank);
         for (Rule defeasibleRule : defeasibleRanks.get(rank).getRules()) {
-            System.out.println(defeasibleRule.toString(":~"));
+//            System.out.println(defeasibleRule.toString(":~"));
 //            System.out.println(defeasibleRule.toString(":~"));
             // If defeasibleSet and infiniteRank and instantiation of body give no model, then exceptional
             inputProgram.clean();
-            System.out.println("Conjunction: " + getRankConjunctionOf(0, rank));
+//            System.out.println("Conjunction: " + getRankConjunctionOf(0, rank));
             inputProgram.addText(defeasibleRanks.get(rank).toProgramString());
 //            inputProgram.addText(getRankConjunctionOf(0, rank));
             inputProgram.addText(infiniteRank.toProgramString());
@@ -52,15 +53,13 @@ public class RankedModel {
 //        DefeasibleRules previous = defeasibleRanks.get(0);
         int rankCounter = 1;
         defeasibleRanks.put(rankCounter, exceptional(rankCounter-1));
-        defeasibleRanks.put(rankCounter - 1,
-                setRemove(defeasibleRanks.get(rankCounter-1), defeasibleRanks.get(rankCounter)));
+        setRemove(defeasibleRanks.get(rankCounter-1), defeasibleRanks.get(rankCounter));
         while ((!defeasibleRanks.get(rankCounter-1).toProgramString().equals(defeasibleRanks.get(rankCounter).toProgramString()))
                 && defeasibleRanks.get(rankCounter).getRules().size() > 0) {
 //        while ((!previous.toProgramString().equals(current.toProgramString())) && current.getRules().size() > 0) {
             rankCounter ++;
             defeasibleRanks.put(rankCounter, exceptional(rankCounter-1));
-            defeasibleRanks.put(rankCounter - 1,
-                    setRemove(defeasibleRanks.get(rankCounter-1), defeasibleRanks.get(rankCounter)));
+            setRemove(defeasibleRanks.get(rankCounter-1), defeasibleRanks.get(rankCounter));
 
 
 //            defeasibleRanks.put(rankCounter, current);
@@ -87,7 +86,10 @@ public class RankedModel {
 
     private DefeasibleRules setRemove(DefeasibleRules lower, DefeasibleRules higher) throws DDLVSyntaxException {
         for (Rule rule : higher.getRules()){
+            System.out.println(rule.toString("~"));
+            printOutDefeasibleRankings();
             lower.remove(rule.toString(":~"));
+            printOutDefeasibleRankings();
         }
         return lower;
     }
@@ -109,7 +111,12 @@ public class RankedModel {
             return infiniteRank.toRuleMap();
         }
         else {
-            return defeasibleRanks.get(ranking).toRuleMap();
+            try {
+                return defeasibleRanks.get(ranking).toRuleMap();
+            }
+            catch (NullPointerException e) {
+                return null;
+            }
         }
     }
 
@@ -139,9 +146,11 @@ public class RankedModel {
         int ranks = defeasibleRanks.size();
         while (currentRank < ranks) {
             inputProgram.clean();
-            inputProgram.addText(defeasibleRanks.get(currentRank).toProgramString());
+            inputProgram.addText(getRankConjunctionOf(currentRank, ranks-1));
+//            inputProgram.addText(defeasibleRanks.get(currentRank).toProgramString());
             inputProgram.addText(infiniteRank.toProgramString());
             inputProgram.addText(queryRule.getBody().instantiate());
+            dlvInvocation = DLVWrapper.getInstance().createInvocation(DDLVProgram.DLV_PATH);
             dlvInvocation.setInputProgram(inputProgram);
             dlvInvocation.run();
             dlvInvocation.waitUntilExecutionFinishes();
@@ -151,6 +160,7 @@ public class RankedModel {
             currentRank ++;
         }
         inputProgram.addText(queryRule.getHead().toQueryString());
+        dlvInvocation = DLVWrapper.getInstance().createInvocation(DDLVProgram.DLV_PATH);
         dlvInvocation.setInputProgram(inputProgram);
         dlvInvocation.run();
         dlvInvocation.waitUntilExecutionFinishes();
@@ -160,10 +170,8 @@ public class RankedModel {
     private boolean strictQuery(StrictRule strictRule) throws DLVInvocationException, IOException {
         inputProgram.clean();
         inputProgram.addText(infiniteRank.toProgramString());
-        for (DefeasibleRules defeasibleRank : defeasibleRanks.values()) {
-            inputProgram.addText(defeasibleRank.toProgramString());
-        }
         inputProgram.addText(strictRule.getBody().instantiate());
+        dlvInvocation = DLVWrapper.getInstance().createInvocation(DDLVProgram.DLV_PATH);
         dlvInvocation.setInputProgram(inputProgram);
         dlvInvocation.run();
         dlvInvocation.waitUntilExecutionFinishes();

@@ -24,6 +24,10 @@ public class DefeasibleRules implements Rules {
         rules = new ArrayList<Rule>();
     }
 
+    public DefeasibleRules(DefeasibleRules inputRules) {
+        rules = new ArrayList<Rule>(inputRules.getRules());
+    }
+
     public void add(String defeasibleRuleString) {
         try {
             Rule defeasibleRule = new DefeasibleRule(defeasibleRuleString);
@@ -76,6 +80,7 @@ public class DefeasibleRules implements Rules {
     }
 
     public void remove(String ruleString) throws DDLVSyntaxException {
+        System.out.println("Called on " + ruleString);
         int ruleIndex = rules.indexOf(new DefeasibleRule(ruleString));
         if (ruleIndex >= 0) {
             rules.remove(ruleIndex);

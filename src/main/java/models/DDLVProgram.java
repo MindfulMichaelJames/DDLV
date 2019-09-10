@@ -63,6 +63,10 @@ public class DDLVProgram {
         unchanged = false;
     }
 
+    public DefeasibleRules getFirstRanking() {
+        return defeasibleRules;
+    }
+
     public DefeasibleRules getDefeasibleRules() {
         return defeasibleRules;
     }

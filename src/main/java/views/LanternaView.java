@@ -35,6 +35,10 @@ public class LanternaView {
         return textPrompt("Enter name of file:");
     }
 
+    public String showLoadErrorScreen() throws IOException {
+        return textPrompt("File does not exist. Please enter name of existing file:");
+    }
+
     public void showResultScreen(boolean success) throws IOException {
         String resultString = "";
         if (success) {
@@ -44,12 +48,17 @@ public class LanternaView {
             resultString = "Query is not entailed";
         }
         screen.clear();
-        screen.setCursorPosition(new TerminalPosition(0, 1));
+        screen.setCursorPosition(null);
         tg.setBackgroundColor(TextColor.ANSI.BLACK).setForegroundColor(TextColor.ANSI.GREEN).putCSIStyledString(0, 0, resultString);
         screen.refresh();
-        KeyStroke keyPressed = terminal.pollInput();
-        while (keyPressed.getKeyType() != KeyType.Escape) {
-            keyPressed = terminal.pollInput();
+
+        while (true) {
+            KeyStroke keyPressed = terminal.pollInput();
+            if (keyPressed != null) {
+                if (keyPressed.getKeyType() == KeyType.Escape) {
+                    break;
+                }
+            }
         }
     }
 
@@ -59,6 +68,10 @@ public class LanternaView {
 
     public String addRuleScreen() throws IOException {
         return textPrompt("Enter new rule:");
+    }
+
+    public String addRuleErrorScreen() throws IOException {
+        return textPrompt("Rule does not conform to DDLV syntax. Please enter new valid DDLV rule:");
     }
 
     private String textPrompt(String prompt) throws IOException {

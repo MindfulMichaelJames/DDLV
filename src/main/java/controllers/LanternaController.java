@@ -75,10 +75,15 @@ public class LanternaController {
 
     public void loadProgram() throws IOException, DDLVSyntaxException, DLVInvocationException {
         filename = view.showLoadScreen();
-        if (!filename.equals("EXIT")) {
-            program = new DDLVProgram(new String(Files.readAllBytes(Paths.get("testfiles", filename))));
-            model = new RankedModel(program);
-            programOptions();
+        while (!filename.equals("EXIT")) {
+            try {
+                program = new DDLVProgram(new String(Files.readAllBytes(Paths.get("testfiles", filename))));
+                model = new RankedModel(program);
+                programOptions();
+            }
+            catch (IOException e) {
+                filename = view.showLoadErrorScreen();
+            }
         }
     }
 
@@ -139,36 +144,50 @@ public class LanternaController {
     public void addRule() throws IOException, DDLVSyntaxException, DLVInvocationException {
         String newRule = view.addRuleScreen();
         while (!newRule.equals("EXIT")){
-            program.addRule(newRule);
-            model = new RankedModel(program);
-            newRule = view.addRuleScreen();
+            try {
+                program.addRule(newRule);
+                model = new RankedModel(program);
+                newRule = view.addRuleScreen();
+            }
+            catch (DDLVSyntaxException e) {
+                newRule = view.addRuleErrorScreen();
+            }
         }
     }
 
     public void viewRemoveProgram() throws IOException, DLVInvocationException, DDLVSyntaxException {
         int selected = view.itemSelect(model.getRankingStrings());
-        if (selected == -1) {
-            editOptions();
-        }
-        else {
+        while (selected != -1 && model.getRuleStrings(selected)!=null) {
             viewRemoveRanking(selected);
+            model = new RankedModel(program);
+            selected = view.itemSelect(model.getRankingStrings());
         }
     }
 
     public void viewRemoveRanking(int ranking) throws IOException, DLVInvocationException, DDLVSyntaxException {
         Map<Integer, String> ruleStrings = model.getRuleStrings(ranking);
-        int selected = view.itemSelect(ruleStrings);
-        if (selected == -1) {
-            viewRemoveProgram();
+        int selected;
+        if (ruleStrings.size() == 0) {
+            return;
         }
         else {
+            selected = view.itemSelect(ruleStrings);
+        }
+        while (selected != -1) {
             removeRule(ruleStrings.get(selected));
+            ruleStrings.remove(selected);
+//            ruleStrings = model.getRuleStrings(ranking);
+            if (ruleStrings.size() == 0) {
+                break;
+            }
+            else {
+                selected = view.itemSelect(ruleStrings);
+            }
         }
     }
 
     public void removeRule(String rule) throws DDLVSyntaxException, DLVInvocationException, IOException {
         program.removeRule(rule);
-        model = new RankedModel(program);
     }
 
     public void viewProgram() throws IOException, DLVInvocationException, DDLVSyntaxException {
@@ -182,7 +201,7 @@ public class LanternaController {
 
     public void viewRanking(int ranking) throws IOException, DLVInvocationException, DDLVSyntaxException {
         Map<Integer, String> ruleStrings = model.getRuleStrings(ranking);
-        System.out.println(ruleStrings);
+//        System.out.println(ruleStrings);
         int selected = view.itemSelect(ruleStrings);
         while (selected != -1) {
             viewRule(ruleStrings.get(selected));
@@ -215,8 +234,10 @@ public class LanternaController {
 
     public void editRule(String rule) throws IOException, DDLVSyntaxException, DLVInvocationException {
         String editedRule = view.ruleEditView(rule);
-        program.replaceRule(rule, editedRule);
-        model = new RankedModel(program);
+        if (!editedRule.equals("EXIT")) {
+            program.replaceRule(rule, editedRule);
+            model = new RankedModel(program);
+        }
     }
 
     public void query() throws IOException, DLVInvocationException, DDLVSyntaxException {
