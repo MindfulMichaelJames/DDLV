@@ -52,13 +52,31 @@ public class DDLVProgram {
 
     public void replaceRule(String oldRule, String newRule) throws DDLVSyntaxException {
         if (oldRule.contains(STRICT_IMPLICATION)) {
-            strictRules.replace(oldRule, newRule);
+            if (newRule.contains(DEFEASIBLE_IMPLICATION)) {
+                defeasibleRules.add(newRule);
+                strictRules.remove(oldRule);
+            }
+            else if (newRule.contains(STRICT_IMPLICATION)) {
+                strictRules.replace(oldRule, newRule);
+            }
+            else {
+                throw new DDLVSyntaxException(newRule);
+            }
         }
         else if (oldRule.contains(DEFEASIBLE_IMPLICATION)) {
-            defeasibleRules.replace(oldRule, newRule);
+            if (newRule.contains(DEFEASIBLE_IMPLICATION)) {
+                defeasibleRules.replace(oldRule, newRule);
+            }
+            else if (newRule.contains(STRICT_IMPLICATION)) {
+                strictRules.add(newRule);
+                defeasibleRules.remove(oldRule);
+            }
+            else {
+                throw new DDLVSyntaxException(newRule);
+            }
         }
         else {
-            throw new DDLVSyntaxException(newRule);
+            throw new DDLVSyntaxException(oldRule);
         }
         unchanged = false;
     }

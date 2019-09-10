@@ -55,7 +55,7 @@ public class LanternaView {
         while (true) {
             KeyStroke keyPressed = terminal.pollInput();
             if (keyPressed != null) {
-                if (keyPressed.getKeyType() == KeyType.Escape) {
+                if (keyPressed.getKeyType() == KeyType.Escape || keyPressed.getKeyType() == KeyType.Enter) {
                     break;
                 }
             }

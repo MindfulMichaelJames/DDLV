@@ -74,13 +74,13 @@ public class DefeasibleRules implements Rules {
     public void replace(String oldRuleString, String newRuleString) throws DDLVSyntaxException {
         Rule oldRule = new DefeasibleRule(oldRuleString);
         Rule newRule = new DefeasibleRule(newRuleString);
-        System.out.println(oldRule.toString(":-"));
+//        System.out.println(oldRule.toString(":-"));
         int ruleIndex = rules.indexOf(oldRule);
         rules.set(ruleIndex, newRule);
     }
 
     public void remove(String ruleString) throws DDLVSyntaxException {
-        System.out.println("Called on " + ruleString);
+//        System.out.println("Called on " + ruleString);
         int ruleIndex = rules.indexOf(new DefeasibleRule(ruleString));
         if (ruleIndex >= 0) {
             rules.remove(ruleIndex);

@@ -159,7 +159,6 @@ public class LanternaController {
         int selected = view.itemSelect(model.getRankingStrings());
         while (selected != -1 && model.getRuleStrings(selected)!=null) {
             viewRemoveRanking(selected);
-            model = new RankedModel(program);
             selected = view.itemSelect(model.getRankingStrings());
         }
     }
@@ -167,31 +166,21 @@ public class LanternaController {
     public void viewRemoveRanking(int ranking) throws IOException, DLVInvocationException, DDLVSyntaxException {
         Map<Integer, String> ruleStrings = model.getRuleStrings(ranking);
         int selected;
-        if (ruleStrings.size() == 0) {
-            return;
-        }
-        else {
+        if (ruleStrings.size() > 0) {
             selected = view.itemSelect(ruleStrings);
-        }
-        while (selected != -1) {
-            removeRule(ruleStrings.get(selected));
-            ruleStrings.remove(selected);
-//            ruleStrings = model.getRuleStrings(ranking);
-            if (ruleStrings.size() == 0) {
-                break;
-            }
-            else {
-                selected = view.itemSelect(ruleStrings);
+            if (selected != -1) {
+                removeRule(ruleStrings.get(selected));
             }
         }
     }
 
     public void removeRule(String rule) throws DDLVSyntaxException, DLVInvocationException, IOException {
         program.removeRule(rule);
+        model = new RankedModel(program);
     }
 
     public void viewProgram() throws IOException, DLVInvocationException, DDLVSyntaxException {
-        model.printOutDefeasibleRankings();
+//        model.printOutDefeasibleRankings();
         int selected = view.itemSelect(model.getRankingStrings());
         while (selected != -1) {
             viewRanking(selected);
@@ -224,12 +213,12 @@ public class LanternaController {
     public void editRanking(int ranking) throws IOException, DLVInvocationException, DDLVSyntaxException {
         Map<Integer, String> ruleStrings = model.getRuleStrings(ranking);
         int selected = view.itemSelect(ruleStrings);
-        while (selected != -1) {
+        if (selected != -1) {
             editRule(ruleStrings.get(selected));
-            ruleStrings = model.getRuleStrings(ranking);
-            selected = view.itemSelect(ruleStrings);
+//            ruleStrings = model.getRuleStrings(ranking);
+//            selected = view.itemSelect(ruleStrings);
         }
-        editProgram();
+//        editProgram();
     }
 
     public void editRule(String rule) throws IOException, DDLVSyntaxException, DLVInvocationException {

@@ -86,10 +86,10 @@ public class RankedModel {
 
     private DefeasibleRules setRemove(DefeasibleRules lower, DefeasibleRules higher) throws DDLVSyntaxException {
         for (Rule rule : higher.getRules()){
-            System.out.println(rule.toString("~"));
-            printOutDefeasibleRankings();
+//            System.out.println(rule.toString("~"));
+//            printOutDefeasibleRankings();
             lower.remove(rule.toString(":~"));
-            printOutDefeasibleRankings();
+//            printOutDefeasibleRankings();
         }
         return lower;
     }
