@@ -21,6 +21,7 @@ public class LanternaController {
 
     public LanternaController(LanternaView view) throws IOException, DDLVSyntaxException, DLVInvocationException {
         this.view = view;
+//        view.screenSizeTest();
         mainScreen();
     }
 

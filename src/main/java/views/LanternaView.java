@@ -135,6 +135,26 @@ public class LanternaView {
         }
     }
 
+    public void screenSizeTest() throws IOException {
+        screen.clear();
+        screen.setCursorPosition(null);
+        String ruleString = "suuuuuuuuuuuuuuuuuuuuuupeeeeeeeeeeeeeeerrrrrrrrloooooooonnnnnggggggggruuuuuuuullllleeeee(X) :- blah(X), bleh(X), blurgh(X)";
+//        for (int row = 0; row < terminal.getTerminalSize().getRows(); row ++) {
+//            for (int column = 0; column < terminal.getTerminalSize().getColumns(); column ++) {
+//                Integer outputVal = column*row;
+//                tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(column, row,
+//                        outputVal.toString());
+//            }
+//        }
+        if (ruleString.length() >= terminal.getTerminalSize().getColumns()) {
+            tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0,
+                        ruleString.substring(0, terminal.getTerminalSize().getColumns()-1));
+            tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 1,
+                        ruleString.substring(terminal.getTerminalSize().getColumns()));
+        }
+        screen.refresh();
+    }
+
     private void itemSelectDisplay(Map<Integer, String> itemMap, int selected) throws IOException {
         screen.clear();
         screen.setCursorPosition(null);
@@ -150,26 +170,43 @@ public class LanternaView {
     }
 
     public int ruleView(String rule) throws IOException {
-        screen.clear();
-        int cursorPosition = 0;
-        int endPosition = rule.length() - 1;
-        screen.setCursorPosition(null);
-        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
-        screen.refresh();
+        int cursorRowPosition = 0;
+        int cursorColumnPosition = 0;
+        Map<Integer, String> ruleStringMap = placeRule(rule);
+        int rows = ruleStringMap.size()-1;
+
         while (true) {
             KeyStroke keyPressed = terminal.pollInput();
             if (keyPressed != null) {
                 switch (keyPressed.getKeyType()) {
                     case ArrowRight:
-                        if (cursorPosition < endPosition) {
-                            cursorPosition ++;
-                            screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+                        if (cursorColumnPosition < ruleStringMap.get(cursorRowPosition).length()-1) {
+                            cursorColumnPosition ++;
+                            screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
                         }
                         break;
                     case ArrowLeft:
-                        if (cursorPosition > 0) {
-                            cursorPosition --;
-                            screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+                        if (cursorColumnPosition > 0) {
+                            cursorColumnPosition --;
+                            screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
+                        }
+                        break;
+                    case ArrowDown:
+                        if (cursorRowPosition < rows) {
+                            cursorRowPosition ++;
+                            if (cursorColumnPosition >= ruleStringMap.get(cursorRowPosition).length()-1) {
+                                cursorColumnPosition = ruleStringMap.get(cursorRowPosition).length()-1;
+                            }
+                            screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
+                        }
+                        break;
+                    case ArrowUp:
+                        if (cursorRowPosition > 0) {
+                            cursorRowPosition --;
+                            if (cursorColumnPosition >= ruleStringMap.get(cursorRowPosition).length()-1) {
+                                cursorColumnPosition = ruleStringMap.get(cursorRowPosition).length()-1;
+                            }
+                            screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
                         }
                         break;
                     case Escape:
@@ -181,45 +218,63 @@ public class LanternaView {
     }
 
     public String ruleEditView(String rule) throws IOException {
-        screen.clear();
-        int cursorPosition = 0;
-        int endPosition = rule.length() - 1;
-        screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
-        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
-        screen.refresh();
+        int cursorRowPosition = 0;
+        int cursorColumnPosition = 0;
+        Map<Integer, String> ruleStringMap = placeRule(rule);
+        int rows = ruleStringMap.size()-1;
+
         while (true) {
             KeyStroke keyPressed = terminal.pollInput();
             if (keyPressed != null) {
                 switch (keyPressed.getKeyType()) {
                     case ArrowRight:
-                        if (cursorPosition < endPosition) {
-                            cursorPosition ++;
-                            screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+                        if (cursorColumnPosition < ruleStringMap.get(cursorRowPosition).length()-1) {
+                            cursorColumnPosition ++;
+                            screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
                         }
                         break;
                     case ArrowLeft:
-                        if (cursorPosition > 0) {
-                            cursorPosition --;
-                            screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+                        if (cursorColumnPosition > 0) {
+                            cursorColumnPosition --;
+                            screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
+                        }
+                        break;
+                    case ArrowDown:
+                        if (cursorRowPosition < rows) {
+                            cursorRowPosition ++;
+                            if (cursorColumnPosition >= ruleStringMap.get(cursorRowPosition).length()-1) {
+                                cursorColumnPosition = ruleStringMap.get(cursorRowPosition).length()-1;
+                            }
+                            screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
+                        }
+                        break;
+                    case ArrowUp:
+                        if (cursorRowPosition > 0) {
+                            cursorRowPosition --;
+                            if (cursorColumnPosition >= ruleStringMap.get(cursorRowPosition).length()-1) {
+                                cursorColumnPosition = ruleStringMap.get(cursorRowPosition).length()-1;
+                            }
+                            screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
                         }
                         break;
                     case Backspace:
-                        rule = rule.substring(0, cursorPosition) + rule.substring(cursorPosition + 1);
-                        screen.clear();
-                        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
-                        endPosition --;
-                        if (cursorPosition > endPosition){
-                            cursorPosition --;
+                        ruleStringMap.replace(cursorRowPosition,
+                                ruleStringMap.get(cursorRowPosition).substring(0, cursorColumnPosition)
+                                        + ruleStringMap.get(cursorRowPosition).substring(cursorColumnPosition + 1));
+                        ruleStringMap = placeRule(rule);
+                        if (cursorColumnPosition > ruleStringMap.get(cursorRowPosition).length()){
+                            cursorColumnPosition --;
                         }
-                        screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+                        screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
                         break;
                     case Character:
-                        rule = rule.substring(0, cursorPosition) + keyPressed.getCharacter() + rule.substring(cursorPosition);
-                        screen.clear();
-                        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
-                        endPosition ++;
-                        cursorPosition ++;
-                        screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+                        ruleStringMap.replace(cursorRowPosition,
+                                ruleStringMap.get(cursorRowPosition).substring(0, cursorColumnPosition)
+                                        + keyPressed.getCharacter()
+                                        + ruleStringMap.get(cursorRowPosition).substring(cursorColumnPosition));
+                        ruleStringMap = placeRule(rule);
+                        cursorColumnPosition ++;
+                        screen.setCursorPosition(new TerminalPosition(cursorColumnPosition, cursorRowPosition));
                         break;
                     case Enter:
                         return rule;
@@ -230,6 +285,78 @@ public class LanternaView {
             screen.refresh();
         }
     }
+
+    public Map<Integer, String> placeRule(String rule) throws IOException {
+        int row = 0;
+        int terminalWidth = terminal.getTerminalSize().getColumns();
+        Map<Integer, String> ruleStringMap = new HashMap<>();
+        screen.clear();
+        screen.setCursorPosition(null);
+        int cutoff;
+        while (rule.length() >= terminalWidth) {
+            cutoff = rule.substring(0, terminal.getTerminalSize().getColumns()-1).lastIndexOf(" ");
+            ruleStringMap.put(row, rule.substring(0, cutoff));
+            tg.setBackgroundColor(background).setForegroundColor(foreground).
+                    putCSIStyledString(0, row, ruleStringMap.get(row));
+            rule = rule.substring(cutoff+1);
+            row++;
+        }
+        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, row, rule);
+        ruleStringMap.put(row, rule);
+        screen.refresh();
+        return ruleStringMap;
+    }
+
+//    public String ruleEditView(String rule) throws IOException {
+//        screen.clear();
+//        int cursorPosition = 0;
+//        int endPosition = rule.length() - 1;
+//        screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+//        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
+//        screen.refresh();
+//        while (true) {
+//            KeyStroke keyPressed = terminal.pollInput();
+//            if (keyPressed != null) {
+//                switch (keyPressed.getKeyType()) {
+//                    case ArrowRight:
+//                        if (cursorPosition < endPosition) {
+//                            cursorPosition ++;
+//                            screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+//                        }
+//                        break;
+//                    case ArrowLeft:
+//                        if (cursorPosition > 0) {
+//                            cursorPosition --;
+//                            screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+//                        }
+//                        break;
+//                    case Backspace:
+//                        rule = rule.substring(0, cursorPosition) + rule.substring(cursorPosition + 1);
+//                        screen.clear();
+//                        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
+//                        endPosition --;
+//                        if (cursorPosition > endPosition){
+//                            cursorPosition --;
+//                        }
+//                        screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+//                        break;
+//                    case Character:
+//                        rule = rule.substring(0, cursorPosition) + keyPressed.getCharacter() + rule.substring(cursorPosition);
+//                        screen.clear();
+//                        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
+//                        endPosition ++;
+//                        cursorPosition ++;
+//                        screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
+//                        break;
+//                    case Enter:
+//                        return rule;
+//                    case Escape:
+//                        return "EXIT";
+//                }
+//            }
+//            screen.refresh();
+//        }
+//    }
 
     public String queryScreen() throws IOException {
         return textPrompt("Enter query:");
