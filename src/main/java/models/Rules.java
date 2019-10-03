@@ -3,7 +3,7 @@ package models;
 import java.util.List;
 
 public interface Rules {
-    public void add(String ruleString);
+    public void add(String ruleString) throws DDLVSyntaxException;
 
     public List<Rule> getRules();
 

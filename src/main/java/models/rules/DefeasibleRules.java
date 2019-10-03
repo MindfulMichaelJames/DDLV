@@ -28,14 +28,13 @@ public class DefeasibleRules implements Rules {
         rules = new ArrayList<Rule>(inputRules.getRules());
     }
 
-    public void add(String defeasibleRuleString) {
-        try {
-            Rule defeasibleRule = new DefeasibleRule(defeasibleRuleString);
-            rules.add(defeasibleRule);
-        }
-        catch (DDLVSyntaxException e) {
-            System.out.println(e.getSyntaxString());
-        }
+    public DefeasibleRules(List<Rule> inputRules) {
+        rules = inputRules;
+    }
+
+    public void add(String defeasibleRuleString) throws DDLVSyntaxException {
+        Rule defeasibleRule = new DefeasibleRule(defeasibleRuleString);
+        rules.add(defeasibleRule);
     }
 
     public void add(Rule defeasibleRule) {

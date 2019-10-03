@@ -17,14 +17,10 @@ public class StrictRules implements Rules {
         rules = new ArrayList<Rule>();
     }
 
-    public void add(String strictRuleString) {
-        try {
-            Rule strictRule = new StrictRule(strictRuleString);
-            rules.add(strictRule);
-        }
-        catch (DDLVSyntaxException e) {
-            System.out.println(e.getSyntaxString());
-        }
+    public void add(String strictRuleString) throws DDLVSyntaxException {
+        Rule strictRule = new StrictRule(strictRuleString);
+        rules.add(strictRule);
+
     }
 
     public List<Rule> getRules() {

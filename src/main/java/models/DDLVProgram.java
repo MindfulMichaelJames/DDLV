@@ -5,6 +5,8 @@ import models.rule.StrictRule;
 import models.rules.DefeasibleRules;
 import models.rules.StrictRules;
 
+import java.util.regex.Matcher;
+
 public class DDLVProgram {
     private StrictRules strictRules;
     private DefeasibleRules defeasibleRules;
@@ -35,7 +37,7 @@ public class DDLVProgram {
         else if (inputRule.contains(DEFEASIBLE_IMPLICATION)) {
             defeasibleRules.add(inputRule);
         }
-        else {
+        else{
             throw new DDLVSyntaxException(inputRule);
         }
         unchanged = false;

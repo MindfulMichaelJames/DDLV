@@ -1,5 +1,12 @@
 plugins {
     id 'java'
+//    id 'application'
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'Main')
+    }
 }
 
 group 'za.ac.uct.cair'
@@ -15,6 +22,7 @@ repositories {
 }
 
 dependencies {
+    compile files('libs/DLVWrapper-4.2.jar')
     compile 'org.beryx:text-io:3.3.0', 'org.beryx:text-io-web:3.3.0', name: 'DLVwrapper-v4.2'
     compile group: 'com.googlecode.clichemaven', name: 'cliche', version: '110413'
     compile group: 'com.googlecode.lanterna', name:'lanterna', version: '3.0.1'

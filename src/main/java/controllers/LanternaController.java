@@ -74,7 +74,7 @@ public class LanternaController {
         System.exit(0);
     }
 
-    public void loadProgram() throws IOException, DDLVSyntaxException, DLVInvocationException {
+    public void loadProgram() throws DLVInvocationException, IOException {
         filename = view.showLoadScreen();
         while (!filename.equals("EXIT")) {
             try {
@@ -83,7 +83,10 @@ public class LanternaController {
                 programOptions();
             }
             catch (IOException e) {
-                filename = view.showLoadErrorScreen();
+                filename = view.showLoadErrorScreen(filename);
+            }
+            catch (DDLVSyntaxException e) {
+                filename = view.showLoadErrorScreen(filename, e);
             }
         }
     }

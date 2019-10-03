@@ -35,8 +35,14 @@ public class LanternaView {
         return textPrompt("Enter name of file:");
     }
 
-    public String showLoadErrorScreen() throws IOException {
-        return textPrompt("File does not exist. Please enter name of existing file:");
+    public String showLoadErrorScreen(String filename) throws IOException {
+        return textPrompt(String.format("The file \"%s\" does not exist. Please enter name of existing file:", filename));
+    }
+
+    public String showLoadErrorScreen(String filename, DDLVSyntaxException e) throws IOException {
+        return textPrompt(String.format(
+                "\"%s\" in file \"%s\" is not a valid DDLV rule. Please enter the name of a valid DDLV program file:",
+                e.getSyntaxString(), filename));
     }
 
     public void showResultScreen(boolean success) throws IOException {
@@ -76,6 +82,7 @@ public class LanternaView {
 
     private String textPrompt(String prompt) throws IOException {
         screen.clear();
+
         screen.setCursorPosition(new TerminalPosition(0, 1));
         tg.setBackgroundColor(TextColor.ANSI.BLACK).setForegroundColor(TextColor.ANSI.GREEN).putCSIStyledString(0, 0, prompt);
         screen.refresh();
@@ -105,6 +112,11 @@ public class LanternaView {
             }
         }
     }
+
+//    private int placeText(String textString) throws IOException {
+//        int width = terminal.getTerminalSize().getColumns();
+//
+//    }
 
     public int itemSelect(Map<Integer, String> itemMap) throws IOException {
         int selected = 0;
