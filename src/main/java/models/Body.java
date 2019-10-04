@@ -1,15 +1,14 @@
 package models;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import models.rule.StrictRule;
+
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Body {
     private String bodyString;
-    private String[] literals;
+    private List<String> literals = new LinkedList<>();
     private Set<String> terms = new HashSet<>();
     private Map<String, String> SYNTAX = new HashMap<>();
     private Pattern bodyPattern;
@@ -22,7 +21,17 @@ public class Body {
             throw new DDLVSyntaxException(bodyString);
         }
         setTerms(bodyString);
-        literals = bodyString.split("\\s*,\\s*");
+        Pattern pattern = Pattern.compile(SYNTAX.get("LITERAL"));
+        Matcher matcher = pattern.matcher(bodyString);
+//        literals = bodyString.split("(?:\\s*" + SYNTAX.get("LITERAL")
+//                + "\\s*),(?:\\s*" + SYNTAX.get("LITERAL") + "\\s*)");
+        while (matcher.find()) {
+            literals.add(matcher.group());
+        }
+//        for (String literal: literals) {
+//            System.out.println(literal);
+//        }
+
     }
 
     private void initSyntaxMap() {
@@ -65,11 +74,23 @@ public class Body {
         return bodyString;
     }
 
+    //TODO ground multivariate literals
     private String groundLiteral(String nonGroundLiteral) {
-        int termIndex = nonGroundLiteral.indexOf("(")+1;
-        return nonGroundLiteral.substring(0, termIndex) +
-                nonGroundLiteral.substring(termIndex, termIndex+1).toLowerCase() +
-                nonGroundLiteral.substring(termIndex+1);
+        if (nonGroundLiteral.contains("(")) {
+            String[] predicateAndTerms = nonGroundLiteral.split("\\(");
+            StringBuilder groundLiteral = new StringBuilder(predicateAndTerms[0].trim()).append("(");
+            String termsString = predicateAndTerms[1].replace(")", "").trim();
+            Pattern pattern = Pattern.compile(SYNTAX.get("TERM"));
+            Matcher matcher = pattern.matcher(termsString);
+            while (matcher.find()){
+                groundLiteral.append(matcher.group().substring(0,1).toLowerCase())
+                        .append(matcher.group().substring(1)).append(", ");
+            }
+            return groundLiteral.toString().substring(0, groundLiteral.length()-2) + ")";
+        }
+        else {
+            return nonGroundLiteral;
+        }
     }
 
     private String groundAnonymousLiteral(String nonGroundAnonymousLiteral) {
@@ -89,8 +110,12 @@ public class Body {
             if (variableMatcher.matches()) {
 //                System.out.println("here");
                 instantiationStringBuilder.append(groundLiteral(literal)).append(".");
+//                System.out.println("Matched");
+//                System.out.println(groundLiteral(literal));
             }
             else {
+//                System.out.println("Not matched");
+//                System.out.println(groundLiteral(literal));
                 Matcher anonymousMatcher = anonymousPattern.matcher(literal);
                 if (anonymousMatcher.matches()) {
                     instantiationStringBuilder.append(groundAnonymousLiteral(literal)).append(".");
