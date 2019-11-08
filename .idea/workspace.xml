@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="79734337-d998-4717-9879-68ec318c55b3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileContent/annotation-processors.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/jarAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/jarAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ddlv.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ddlv.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Michael.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/DLVwrapper_v4_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controllers/LanternaController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controllers/LanternaController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controllers/LanternaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controllers/LanternaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/Body.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/Body.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/DDLVProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/DDLVProgram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/Head.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/Head.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/Literal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/Literal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/RankedModel$1ExceptionalityReasoner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/RankedModel$1ExceptionalityReasoner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/RankedModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/RankedModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/Rule.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/Rule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/rules/DefeasibleRules.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/rules/DefeasibleRules.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/rules/StrictRules.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/rules/StrictRules.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/views/LanternaView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/views/LanternaView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/views/LanternaView.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/views/LanternaView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/ddlv-1.0-SNAPSHOT.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/ddlv-1.0-SNAPSHOT.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/ddlv-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/ddlv-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/scripts/ddlv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/scripts/ddlv.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CliController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LanternaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LanternaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/DDLVProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/DDLVProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Literal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Rank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/RankedModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/RankedModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Rule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/rule/DefeasibleRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/rule/DefeasibleRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/rule/StrictRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/rule/StrictRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/rules/DefeasibleRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/rules/DefeasibleRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/CliView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/LanternaView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/LanternaView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/laterna/LoadScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfiles/bigtestfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfiles/logic" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfiles/test1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfiles/test1000" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfiles/test10000" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfiles/test10000e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfiles/test1000e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfiles/testfile" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ddlv" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ddlv" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="ddlv" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="evaluation" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Ouu21i20Cpmsq0dHvb23YrMYNW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../defeasible-owl-ontologies" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/testresults" />
+      <recent name="$PROJECT_DIR$/testfiles/test3500" />
+      <recent name="$PROJECT_DIR$/libs" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JAR Application.ddlv-1.0-SNAPSHOT.jar">
+    <configuration name="CliView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="views.CliView" />
+      <module name="ddlv.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="views.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ddlv.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ddlv-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/ddlv-1.0-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.ddlv-1.0-SNAPSHOT.jar" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.CliView" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.CliView" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="79734337-d998-4717-9879-68ec318c55b3" name="Default Changelist" comment="" />
+      <created>1557843800993</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557843800993</updated>
+      <workItem from="1557843807067" duration="560000" />
+      <workItem from="1557938505168" duration="3123000" />
+      <workItem from="1558102957415" duration="414000" />
+      <workItem from="1558439349847" duration="362000" />
+      <workItem from="1558543009064" duration="208000" />
+      <workItem from="1558764843950" duration="814000" />
+      <workItem from="1559044335972" duration="1107000" />
+      <workItem from="1559980830372" duration="160000" />
+      <workItem from="1564839593397" duration="2789000" />
+      <workItem from="1565189656585" duration="1294000" />
+      <workItem from="1565204895331" duration="33154000" />
+      <workItem from="1566139456742" duration="8555000" />
+      <workItem from="1566404273059" duration="22000" />
+      <workItem from="1566404308103" duration="91516000" />
+      <workItem from="1567555733523" duration="1450000" />
+      <workItem from="1567578185336" duration="20551000" />
+      <workItem from="1568122105549" duration="14947000" />
+      <workItem from="1568212584478" duration="7607000" />
+      <workItem from="1568714416299" duration="13719000" />
+      <workItem from="1569394238627" duration="652000" />
+      <workItem from="1569397156183" duration="45588000" />
+      <workItem from="1570133854597" duration="8556000" />
+      <workItem from="1570430912466" duration="10719000" />
+      <workItem from="1570522700177" duration="3077000" />
+      <workItem from="1570915500341" duration="1705000" />
+      <workItem from="1570987699130" duration="33815000" />
+      <workItem from="1572274284771" duration="1504000" />
+      <workItem from="1572463827842" duration="1778000" />
+      <workItem from="1573150178562" duration="6000" />
+      <workItem from="1573242829987" duration="2690000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="568" y="357" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1572463608332">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="568" y="357" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1440.877@0.23.1440.877" timestamp="1572463608332" />
+    <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1573245218329">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877@0.23.1440.877" timestamp="1573245218329" />
+    <state width="1398" height="177" key="GridCell.Tab.0.bottom" timestamp="1573075567161">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="177" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1572463992261" />
+    <state width="1398" height="177" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1573075567161" />
+    <state width="1398" height="177" key="GridCell.Tab.0.center" timestamp="1573075567160">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="177" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1572463992260" />
+    <state width="1398" height="177" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1573075567160" />
+    <state width="1398" height="177" key="GridCell.Tab.0.left" timestamp="1573075567157">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="177" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1572463992259" />
+    <state width="1398" height="177" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1573075567157" />
+    <state width="1398" height="177" key="GridCell.Tab.0.right" timestamp="1573075567161">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="177" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1572463992260" />
+    <state width="1398" height="177" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1573075567161" />
+    <state x="431" y="173" key="MultipleFileMergeDialog" timestamp="1572462559012">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="431" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1572462559012" />
+    <state x="220" y="100" key="SettingsEditor" timestamp="1572463813095">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="220" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1572463813095" />
+    <state x="397" y="309" key="com.intellij.ide.util.TipDialog" timestamp="1573242830763">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="397" y="294" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1573150179733" />
+    <state x="397" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877/-1920.-305.1920.1057@0.23.1440.877" timestamp="1572274284367" />
+    <state x="397" y="309" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1573242830763" />
+    <state x="466" y="170" key="git4idea.branch.GitSmartOperationDialog" timestamp="1572462555811">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="466" y="170" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.900@0.0.1440.900" timestamp="1572462555811" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" suspend="THREAD" type="java-exception">
+          <condition expression="this instanceof java.lang.IllegalThreadStateException" language="JAVA" />
+          <properties>
+            <catch-class-filters>
+              <class-filter pattern="it.unical.mat.wrapper.DLVInvocationImpl" />
+            </catch-class-filters>
+            <option name="catch-filters-enabled" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GradleRunConfiguration">
+        <watch expression="defeasibleRanks" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ddlv$Main.ic" NAME="Main Coverage Results" MODIFIED="1567607475499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

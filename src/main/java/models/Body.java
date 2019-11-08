@@ -1,7 +1,5 @@
 package models;
 
-import models.rule.StrictRule;
-
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,15 +21,9 @@ public class Body {
         setTerms(bodyString);
         Pattern pattern = Pattern.compile(SYNTAX.get("LITERAL"));
         Matcher matcher = pattern.matcher(bodyString);
-//        literals = bodyString.split("(?:\\s*" + SYNTAX.get("LITERAL")
-//                + "\\s*),(?:\\s*" + SYNTAX.get("LITERAL") + "\\s*)");
         while (matcher.find()) {
             literals.add(matcher.group());
         }
-//        for (String literal: literals) {
-//            System.out.println(literal);
-//        }
-
     }
 
     private void initSyntaxMap() {
@@ -74,7 +66,6 @@ public class Body {
         return bodyString;
     }
 
-    //TODO ground multivariate literals
     private String groundLiteral(String nonGroundLiteral) {
         if (nonGroundLiteral.contains("(")) {
             String[] predicateAndTerms = nonGroundLiteral.split("\\(");
@@ -106,16 +97,10 @@ public class Body {
         Pattern anonymousPattern = Pattern.compile(SYNTAX.get("ANONYMOUS_LITERAL"));
         for (String literal : literals) {
             Matcher variableMatcher = variablePattern.matcher(literal);
-//            System.out.println("but here");
             if (variableMatcher.matches()) {
-//                System.out.println("here");
                 instantiationStringBuilder.append(groundLiteral(literal)).append(".");
-//                System.out.println("Matched");
-//                System.out.println(groundLiteral(literal));
             }
             else {
-//                System.out.println("Not matched");
-//                System.out.println(groundLiteral(literal));
                 Matcher anonymousMatcher = anonymousPattern.matcher(literal);
                 if (anonymousMatcher.matches()) {
                     instantiationStringBuilder.append(groundAnonymousLiteral(literal)).append(".");

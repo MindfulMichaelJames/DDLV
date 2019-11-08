@@ -1,6 +1,0 @@
-q(X) :~ p(X).
--q(X) v r(X) :~ p(X), pp(X).
-q(X) :~ p(X), pp(X), ppp(X).
--q(X) :~ p(X), pp(X), ppp(X), pppp(X).
-q(X) :~ p(X), pp(X), ppp(X), pppp(X), ppppp(X).
--q(X) :~ p(X), pp(X), ppp(X), pppp(X), ppppp(X), pppppp(X).

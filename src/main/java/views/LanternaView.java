@@ -8,9 +8,7 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import enums.InterfaceFunctions;
 import models.DDLVSyntaxException;
-import models.RankedModel;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -20,7 +18,6 @@ public class LanternaView {
     private Terminal terminal;
     private Screen screen;
     private static TextGraphics tg;
-    private boolean keepRunning = true;
     private TextColor foreground = TextColor.ANSI.GREEN;
     private TextColor background = TextColor.ANSI.BLACK;
 
@@ -112,11 +109,6 @@ public class LanternaView {
             }
         }
     }
-
-//    private int placeText(String textString) throws IOException {
-//        int width = terminal.getTerminalSize().getColumns();
-//
-//    }
 
     public int itemSelect(Map<Integer, String> itemMap) throws IOException {
         int selected = 0;
@@ -319,75 +311,8 @@ public class LanternaView {
         return ruleStringMap;
     }
 
-//    public String ruleEditView(String rule) throws IOException {
-//        screen.clear();
-//        int cursorPosition = 0;
-//        int endPosition = rule.length() - 1;
-//        screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
-//        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
-//        screen.refresh();
-//        while (true) {
-//            KeyStroke keyPressed = terminal.pollInput();
-//            if (keyPressed != null) {
-//                switch (keyPressed.getKeyType()) {
-//                    case ArrowRight:
-//                        if (cursorPosition < endPosition) {
-//                            cursorPosition ++;
-//                            screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
-//                        }
-//                        break;
-//                    case ArrowLeft:
-//                        if (cursorPosition > 0) {
-//                            cursorPosition --;
-//                            screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
-//                        }
-//                        break;
-//                    case Backspace:
-//                        rule = rule.substring(0, cursorPosition) + rule.substring(cursorPosition + 1);
-//                        screen.clear();
-//                        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
-//                        endPosition --;
-//                        if (cursorPosition > endPosition){
-//                            cursorPosition --;
-//                        }
-//                        screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
-//                        break;
-//                    case Character:
-//                        rule = rule.substring(0, cursorPosition) + keyPressed.getCharacter() + rule.substring(cursorPosition);
-//                        screen.clear();
-//                        tg.setBackgroundColor(background).setForegroundColor(foreground).putCSIStyledString(0, 0, rule);
-//                        endPosition ++;
-//                        cursorPosition ++;
-//                        screen.setCursorPosition(new TerminalPosition(cursorPosition, 0));
-//                        break;
-//                    case Enter:
-//                        return rule;
-//                    case Escape:
-//                        return "EXIT";
-//                }
-//            }
-//            screen.refresh();
-//        }
-//    }
-
     public String queryScreen() throws IOException {
         return textPrompt("Enter query:");
-    }
-
-    public void setForeground(TextColor foreground) {
-        this.foreground = foreground;
-    }
-
-    public void setBackground(TextColor background) {
-        this.background = background;
-    }
-
-    public void showRankScreen() {
-
-    }
-
-    public void editProgramScreen() {
-
     }
 
     public void exit() throws IOException {

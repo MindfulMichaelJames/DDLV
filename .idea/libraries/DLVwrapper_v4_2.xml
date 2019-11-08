@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="DLVwrapper-v4.2">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../Downloads/DLVwrapper-v4.2.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

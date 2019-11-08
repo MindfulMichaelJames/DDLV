@@ -34,7 +34,4 @@ public abstract class Rule {
             return head.toString() + " " + implication + " " + body.toString() + ".";
         }
     }
-
-    public abstract boolean isDefeasible();
-
 }

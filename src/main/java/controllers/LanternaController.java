@@ -21,33 +21,7 @@ public class LanternaController {
 
     public LanternaController(LanternaView view) throws IOException, DDLVSyntaxException, DLVInvocationException {
         this.view = view;
-//        view.screenSizeTest();
         mainScreen();
-    }
-
-    public void executeCommand(InterfaceFunctions command) throws DLVInvocationException, DDLVSyntaxException, IOException {
-        switch (command) {
-            case MAIN:
-                mainScreen();
-                break;
-            case LOAD:
-                loadProgram();
-                break;
-            case CREATE:
-                createProgram();
-                break;
-            case VIEW:
-                viewProgram();
-                break;
-            case EDIT:
-                editProgram();
-                break;
-            case QUERY:
-                query();
-                break;
-            case NULL:
-                break;
-        }
     }
 
     public void mainScreen() throws IOException, DDLVSyntaxException, DLVInvocationException {
@@ -184,7 +158,6 @@ public class LanternaController {
     }
 
     public void viewProgram() throws IOException, DLVInvocationException, DDLVSyntaxException {
-//        model.printOutDefeasibleRankings();
         int selected = view.itemSelect(model.getRankingStrings());
         while (selected != -1) {
             viewRanking(selected);
@@ -194,7 +167,6 @@ public class LanternaController {
 
     public void viewRanking(int ranking) throws IOException, DLVInvocationException, DDLVSyntaxException {
         Map<Integer, String> ruleStrings = model.getRuleStrings(ranking);
-//        System.out.println(ruleStrings);
         int selected = view.itemSelect(ruleStrings);
         while (selected != -1) {
             viewRule(ruleStrings.get(selected));
@@ -219,10 +191,7 @@ public class LanternaController {
         int selected = view.itemSelect(ruleStrings);
         if (selected != -1) {
             editRule(ruleStrings.get(selected));
-//            ruleStrings = model.getRuleStrings(ranking);
-//            selected = view.itemSelect(ruleStrings);
         }
-//        editProgram();
     }
 
     public void editRule(String rule) throws IOException, DDLVSyntaxException, DLVInvocationException {
@@ -241,17 +210,4 @@ public class LanternaController {
             queryString = view.queryScreen();
         }
     }
-
-    public void makeDefeasible(String queryString){
-
-    }
-
-    public void makeStrict(String queryString){
-
-    }
-
-
-//    public void run() {
-//        new CliView().accept(textIO, null);
-//    }
 }
